@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "428752170346",
+    "project_id": "agdp-hugo",
+    "storage_bucket": "agdp-hugo.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:428752170346:android:ee29d00ca2e4ec54de8913",
+        "android_client_info": {
+          "package_name": "com.agdp.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWoRs8cPz7BW7ZdPVjl1axi46lqHEL2oI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

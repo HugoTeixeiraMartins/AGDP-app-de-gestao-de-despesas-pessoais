@@ -15,6 +15,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -128,7 +129,7 @@ fun AddExpenseScreen(vm: AppVM, onSaved: () -> Unit) {
         OutlinedTextField(desc, { desc = it }, label = { Text("Descrição") }, modifier = Modifier.fillMaxWidth())
         Text("Categoria")
         LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            items(CATEGORIES) { c -> FilterChip(selected = category == c, onClick = { category = c }, label = { Text(c) }) }
+            items(CATEGORIES) { c: String -> FilterChip(selected = category == c, onClick = { category = c }, label = { Text(c) }) }
         }
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             OutlinedButton(onClick = { camera.launch(null) }) { Text("Tirar foto") }
@@ -147,7 +148,7 @@ fun AddExpenseScreen(vm: AppVM, onSaved: () -> Unit) {
         ) { Text(if (saving) "A guardar..." else "Guardar") }
     }
 }
-private fun Bitmap.asImageBitmap() = androidx.compose.ui.graphics.asImageBitmap(this)
+
 
 // ======================= 4. HISTORY =======================
 @OptIn(ExperimentalMaterial3Api::class)
@@ -161,7 +162,7 @@ fun HistoryScreen(vm: AppVM) {
         Text("Histórico", style = MaterialTheme.typography.headlineSmall)
         LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             item { FilterChip(selected = filter == null, onClick = { filter = null }, label = { Text("Todas") }) }
-            items(CATEGORIES) { c -> FilterChip(selected = filter == c, onClick = { filter = c }, label = { Text(c) }) }
+            items(CATEGORIES) { c: String -> FilterChip(selected = filter == c, onClick = { filter = c }, label = { Text(c) }) }
         }
         Text("Total: ${eur(list.sumOf { it.amount })}", Modifier.padding(vertical = 8.dp))
         LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
